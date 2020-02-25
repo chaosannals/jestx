@@ -1,0 +1,18 @@
+plugins {
+    id 'java-library'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation 'mysql:mysql-connector-java:8.0.17'
+    implementation 'org.mybatis:mybatis:3.5.3'
+    implementation 'org.apache.poi:poi:4.1.2'
+    testImplementation 'junit:junit:4.12'
+}

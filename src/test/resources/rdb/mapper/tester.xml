@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jestx.rdb.mapper.TesterMapper">
+    <update id="create">
+        CREATE TABLE j_tester
+        (
+            `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID',
+            `username` VARCHAR(64) NOT NULL COMMENT '用户名',
+            `password` BINARY(64) DEFAULT NULL COMMENT '密码',
+            `nickname` VARCHAR(64) DEFAULT NULL COMMENT '昵称',
+            PRIMARY KEY (`id`),
+            UNIQUE KEY (`username`)
+        ) ENGINE='InnoDB' DEFAULT CHARSET='utf8mb4' COLLATE='utf8mb4_unicode_ci' COMMENT='测试者' 
+    </update>
+    <update id="drop">
+        DROP TABLE j_tester
+    </update>
+</mapper>
