@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'jestx'
-version '1.0.2'
+version '1.0.3'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -40,8 +40,21 @@ bintray {
         licenses = ['MIT']
         publish = true
         version {
-            name = '1.0.2'
-            vcsTag = '1.0.2'
+            name = version
+            vcsTag = version
         }
     }
+}
+
+task createPom {
+    apply plugin: 'maven'
+    description "create Pom for libY SDK"
+    pom {
+        project {
+            groupId 'jestx'
+            artifactId 'jestx'
+            version version
+            packaging 'jar'
+        }
+    }.writeTo("${rootProject.rootDir}/pom.xml")
 }
