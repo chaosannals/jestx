@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'jestx'
-version '1.0.0'
+version '1.0.1'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -35,8 +35,8 @@ bintray {
         licenses = ['MIT']
         publish = true
         version {
-            name = '1.0.0'
-            vcsTag = '1.0.0'
+            name = '1.0.1'
+            vcsTag = '1.0.1'
         }
     }
 }
