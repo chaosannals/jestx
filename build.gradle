@@ -4,10 +4,15 @@ plugins {
 }
 
 group 'jestx'
-version '1.0.1'
+version '1.0.2'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+}
+
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
 }
 
 repositories {
@@ -35,8 +40,8 @@ bintray {
         licenses = ['MIT']
         publish = true
         version {
-            name = '1.0.1'
-            vcsTag = '1.0.1'
+            name = '1.0.2'
+            vcsTag = '1.0.2'
         }
     }
 }
