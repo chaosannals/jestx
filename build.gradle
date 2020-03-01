@@ -34,8 +34,9 @@ bintray {
         vcsUrl = 'https://github.com/chaosannals/jestx.git'
         licenses = ['MIT']
         publish = true
-    }
-    version {
-        name = '1.0.0'
+        version {
+            name = '1.0.0'
+            vcsTag = '1.0.0'
+        }
     }
 }
