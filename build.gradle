@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'jestx'
-version '1.0.3'
+version '1.0.4'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -40,8 +40,8 @@ bintray {
         licenses = ['MIT']
         publish = true
         version {
-            name = version
-            vcsTag = version
+            name = '1.0.4'
+            vcsTag = '1.0.4'
         }
     }
 }
@@ -53,7 +53,7 @@ task createPom {
         project {
             groupId 'jestx'
             artifactId 'jestx'
-            version version
+            version '1.0.4'
             packaging 'jar'
         }
     }.writeTo("${rootProject.rootDir}/pom.xml")
