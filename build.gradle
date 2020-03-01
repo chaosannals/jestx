@@ -1,6 +1,10 @@
 plugins {
     id 'java-library'
+    id 'com.jfrog.bintray' version "1.8.4"
 }
+
+group 'jestx'
+version '1.0.0'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -15,4 +19,23 @@ dependencies {
     implementation 'org.mybatis:mybatis:3.5.3'
     implementation 'org.apache.poi:poi:4.1.2'
     testImplementation 'junit:junit:4.12'
+}
+
+Properties properties = new Properties()
+properties.load(project.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty('bintray.user')
+    key = properties.getProperty('bintray.apikey')
+    configurations = ['archives']
+    pkg {
+        repo = 'jestx'
+        name = 'jestx'
+        websiteUrl = 'https://github.com/chaosannals/jestx'
+        vcsUrl = 'https://github.com/chaosannals/jestx.git'
+        licenses = ['MIT']
+        publish = true
+    }
+    version {
+        name = '1.0.0'
+    }
 }
