@@ -1,10 +1,23 @@
 plugins {
+    id 'java'
     id 'java-library'
+    id 'maven'
+    id 'maven-publish'
     id 'com.jfrog.bintray' version "1.8.4"
 }
 
 group 'jestx'
-version '1.0.5'
+version '1.0.7'
+
+task sourcesJar(type: Jar) {
+    classifier = "sources"
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -13,6 +26,12 @@ tasks.withType(JavaCompile) {
 tasks.withType(Javadoc) {
     options.addStringOption('Xdoclint:none', '-quiet')
     options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
 }
 
 repositories {
@@ -34,27 +53,36 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = 'jestx'
-        name = 'jestx:jestx'
+        name = 'jestx'
         websiteUrl = 'https://github.com/chaosannals/jestx'
         vcsUrl = 'https://github.com/chaosannals/jestx.git'
         licenses = ['MIT']
         publish = true
         version {
-            name = '1.0.5'
-            vcsTag = '1.0.5'
+            name = '1.0.7'
+            vcsTag = '1.0.7'
         }
     }
 }
 
 task createPom {
-    apply plugin: 'maven'
     description "create Pom"
     pom {
         project {
             groupId 'jestx'
             artifactId 'jestx'
-            version '1.0.5'
+            version '1.0.7'
             packaging 'jar'
+            developers {
+                developer {
+                    id "chaosannals"
+                    name "ChaosAnnals"
+                    email "chaosanals@outlook.com"
+                }
+            }
+            scm {
+                url "https://github.com/chaosannals/jestx"
+            }
         }
     }.writeTo("${rootProject.rootDir}/pom.xml")
 }
