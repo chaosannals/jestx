@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'jestx'
-version '1.0.4'
+version '1.0.5'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -34,26 +34,26 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = 'jestx'
-        name = 'jestx'
+        name = 'jestx:jestx'
         websiteUrl = 'https://github.com/chaosannals/jestx'
         vcsUrl = 'https://github.com/chaosannals/jestx.git'
         licenses = ['MIT']
         publish = true
         version {
-            name = '1.0.4'
-            vcsTag = '1.0.4'
+            name = '1.0.5'
+            vcsTag = '1.0.5'
         }
     }
 }
 
 task createPom {
     apply plugin: 'maven'
-    description "create Pom for libY SDK"
+    description "create Pom"
     pom {
         project {
             groupId 'jestx'
             artifactId 'jestx'
-            version '1.0.4'
+            version '1.0.5'
             packaging 'jar'
         }
     }.writeTo("${rootProject.rootDir}/pom.xml")
