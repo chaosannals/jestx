@@ -6,8 +6,8 @@ plugins {
     id 'com.jfrog.bintray' version "1.8.4"
 }
 
-group 'jestx'
-version '1.0.7'
+group 'cn.xhigh'
+version '1.0.8'
 
 task sourcesJar(type: Jar) {
     classifier = "sources"
@@ -59,8 +59,8 @@ bintray {
         licenses = ['MIT']
         publish = true
         version {
-            name = '1.0.7'
-            vcsTag = '1.0.7'
+            name = '1.0.8'
+            vcsTag = '1.0.8'
         }
     }
 }
@@ -69,9 +69,9 @@ task createPom {
     description "create Pom"
     pom {
         project {
-            groupId 'jestx'
+            groupId 'cn.xhigh'
             artifactId 'jestx'
-            version '1.0.7'
+            version '1.0.8'
             packaging 'jar'
             developers {
                 developer {

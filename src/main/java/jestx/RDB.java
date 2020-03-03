@@ -11,9 +11,10 @@ public abstract class RDB {
     private static HashMap<String, SqlSessionFactory> factories = new HashMap<>();
 
     /**
+     * 获取工厂
      * 
-     * @param name
-     * @return
+     * @param name 工厂名
+     * @return 工厂单例
      */
     public static SqlSessionFactory getSessionFactory(String name) {
         if (!factories.containsKey(name)) {
@@ -27,8 +28,9 @@ public abstract class RDB {
     }
 
     /**
+     * 打开会话
      * 
-     * @param name
+     * @param name 工厂名
      * @return
      */
     public static Step<SqlSession> open(String name) {

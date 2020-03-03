@@ -3,24 +3,27 @@ package jestx;
 import java.util.function.*;
 
 /**
+ * 链式
  * 
  */
 public class Step<P> {
     private P param;
 
     /**
+     * 构造子
      * 
-     * @param param
+     * @param param 传递的参数
      */
     public Step(P param) {
         this.param = param;
     }
 
     /**
+     * 调用。
      * 
-     * @param <R>
-     * @param next
-     * @return
+     * @param <R> 返回类型
+     * @param next 回调
+     * @return 下一步
      * @throws Exception
      */
     public <R> Step<R> then(Function<P, R> next) {
@@ -29,9 +32,10 @@ public class Step<P> {
     }
 
     /**
+     * 无返回值调用。
      * 
-     * @param next
-     * @return
+     * @param next 下一步
+     * @return 本身
      */
     public Step<P> then(Consumer<P> next) {
         next.accept(this.param);
@@ -39,8 +43,9 @@ public class Step<P> {
     }
 
     /**
+     * 查看参数
      * 
-     * @return
+     * @return 参数
      */
     public P peek() {
         return this.param;

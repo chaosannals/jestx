@@ -6,13 +6,15 @@ import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.poifs.filesystem.*;
 
 /**
+ * Excel 工具类
  * 
  */
 public abstract class XLSX {
     /**
+     * 加载 Excel 文件。
      * 
-     * @param path
-     * @return
+     * @param path 文件路径
+     * @return 下一步
      * @throws IOException
      */
     public static Step<HSSFWorkbook> load(String path) throws IOException {
@@ -24,9 +26,10 @@ public abstract class XLSX {
     }
 
     /**
+     * 加载 Excel 文件 并打开默认页。
      * 
-     * @param path
-     * @return
+     * @param path 文件路径
+     * @return 下一步
      * @throws IOException
      */
     public static Step<HSSFSheet> open(String path) throws IOException {
@@ -37,10 +40,11 @@ public abstract class XLSX {
     }
 
     /**
+     * 打开文件，打开指定页。
      * 
-     * @param path
-     * @param index
-     * @return
+     * @param path 文件路径
+     * @param index 页索引
+     * @return 下一步
      * @throws IOException
      */
     public static Step<HSSFSheet> open(String path, int index) throws IOException {
@@ -49,6 +53,14 @@ public abstract class XLSX {
         });
     }
 
+    /**
+     * 获取指定页的行。
+     * 
+     * @param sheet 页对象
+     * @param start 开始行
+     * @param end 结束行
+     * @return 行数组
+     */
     public static ArrayList<HSSFRow> fetch(HSSFSheet sheet, Integer start, Integer end) {
         ArrayList<HSSFRow> result = new ArrayList<>();
         int firstRowIndex = 0;
@@ -67,11 +79,12 @@ public abstract class XLSX {
     }
 
     /**
+     * 打开 Excel 文件并获取默认页的行。
      * 
-     * @param path
-     * @param start
-     * @param end
-     * @return
+     * @param path 文件路径
+     * @param start 开始行
+     * @param end 结束行
+     * @return 行数组
      * @throws IOException
      */
     public static ArrayList<HSSFRow> fetch(String path, Integer start, Integer end) throws IOException {
@@ -81,9 +94,10 @@ public abstract class XLSX {
     }
 
     /**
+     * 打开 Excel 文件并获取所有行。
      * 
-     * @param path
-     * @return
+     * @param path 文件路径
+     * @return 行数组
      * @throws IOException
      */
     public static ArrayList<HSSFRow> fetch(String path) throws IOException {
@@ -91,10 +105,11 @@ public abstract class XLSX {
     }
 
     /**
+     * 打开默认页，并获取行。
      * 
-     * @param path
-     * @param start
-     * @return
+     * @param path 文件路径
+     * @param start 开始行
+     * @return 行数组
      * @throws IOException
      */
     public static ArrayList<HSSFRow> fetch(String path, Integer start) throws IOException {
